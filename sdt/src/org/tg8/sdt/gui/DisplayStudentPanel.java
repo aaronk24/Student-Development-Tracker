@@ -71,7 +71,7 @@ public class DisplayStudentPanel extends JPanel {
 		innerPanel.add(this.getNote());
 		
 		this.add(innerPanel, BorderLayout.CENTER);
-		this.add(this.getPicturePanel(), BorderLayout.LINE_START);
+		// this.add(this.getPicturePanel(), BorderLayout.LINE_START);
 	}
 
 	

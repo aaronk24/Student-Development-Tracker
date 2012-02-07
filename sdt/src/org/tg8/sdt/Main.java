@@ -30,7 +30,7 @@ public class Main {
 			System.setProperty("com.apple.mrj.application.apple.menu.about.name", "SDT");
 			SDTDAO dao = new SDTDAOImpl();
 			SDTDomainLogic.createSDTDomainLogic(dao);
-			SDTFrame frame = new SDTFrame("Student Development Tracker (alpha)");
+			SDTFrame frame = new SDTFrame("Student Development Tracker");
 			Cleanup clean = new Cleanup(dao);
 			frame.addWindowListener(clean);
 			frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);

@@ -1,5 +1,9 @@
 package org.tg8.sdt;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
@@ -33,8 +37,17 @@ public class Main {
 			if (System.getProperty("os.name").toLowerCase().startsWith("mac os x")) {
 				initMACOSXQuit(clean);
 			}
-			frame.setVisible(true);			
+			frame.setVisible(true);
+			throw new RuntimeException("How bout them apples?");
 		} catch (Exception e) {
+			try {
+				PrintWriter errorLog = new PrintWriter(new BufferedWriter(new FileWriter("error.log")));
+				e.printStackTrace(errorLog);
+				errorLog.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

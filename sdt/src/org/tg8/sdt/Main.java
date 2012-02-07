@@ -27,6 +27,7 @@ public class Main {
 		//more complex.
 		//Cleanup safely destroys the DAO 
 		try {
+			System.setProperty("com.apple.mrj.application.apple.menu.about.name", "SDT");
 			SDTDAO dao = new SDTDAOImpl();
 			SDTDomainLogic.createSDTDomainLogic(dao);
 			SDTFrame frame = new SDTFrame("Student Development Tracker (alpha)");
@@ -38,7 +39,6 @@ public class Main {
 				initMACOSXQuit(clean);
 			}
 			frame.setVisible(true);
-			throw new RuntimeException("How bout them apples?");
 		} catch (Exception e) {
 			try {
 				PrintWriter errorLog = new PrintWriter(new BufferedWriter(new FileWriter("error.log")));

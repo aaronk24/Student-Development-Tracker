@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 import org.tg8.sdt.data.SDTDAO;
@@ -26,11 +27,12 @@ public class Main {
 		//is crude, but sufficient until the app becomes
 		//more complex.
 		//Cleanup safely destroys the DAO 
+		SDTFrame frame = null;
 		try {
 			System.setProperty("com.apple.mrj.application.apple.menu.about.name", "SDT");
 			SDTDAO dao = new SDTDAOImpl();
 			SDTDomainLogic.createSDTDomainLogic(dao);
-			SDTFrame frame = new SDTFrame("Student Development Tracker");
+			frame = new SDTFrame("Student Development Tracker");
 			Cleanup clean = new Cleanup(dao);
 			frame.addWindowListener(clean);
 			frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
@@ -41,14 +43,16 @@ public class Main {
 			frame.setVisible(true);
 		} catch (Exception e) {
 			try {
-				PrintWriter errorLog = new PrintWriter(new BufferedWriter(new FileWriter("error.log")));
+				PrintWriter errorLog = new PrintWriter(new BufferedWriter(new FileWriter("error.log", true)));
 				e.printStackTrace(errorLog);
 				errorLog.close();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(frame, e1.getStackTrace(), "SDT Error", JOptionPane.ERROR_MESSAGE);
 			}
-			// TODO Auto-generated catch block
+			finally {
+				JOptionPane.showMessageDialog(frame, e.getStackTrace(), "SDT Error", JOptionPane.ERROR_MESSAGE);
+			}
 			e.printStackTrace();
 		}
 	}

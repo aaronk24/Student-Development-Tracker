@@ -1,5 +1,6 @@
 package org.tg8.sdt.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.tg8.sdt.data.SDTDAO;
@@ -29,8 +30,10 @@ public class SDTDomainLogic {
 	}
 	
 	public List<Student> initializeStudentAttendanceList() {
-		GateService gs = this.getGateService();
-		return dao.getStudentsAttendingService(gs);
+		if (dao.getGateService(new SDTDate()) == null) {
+			return new ArrayList<Student>();
+		}
+		return dao.getStudentsAttendingService(this.getGateService());
 	}
 	
 	// Add's student to today's (system date) attendance list.

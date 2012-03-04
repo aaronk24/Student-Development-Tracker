@@ -166,7 +166,6 @@ class EditStudentPanel extends JPanel implements ActionListener {
 			cancel.addActionListener(this);
 			cancel.setActionCommand(EditStudentPanel.CANCEL_STUDENT_INFO);
 			buttons.add(cancel);
-			// need to set action command
 			si.add(buttons);
 			
 			this.studentInfoPanel = si;

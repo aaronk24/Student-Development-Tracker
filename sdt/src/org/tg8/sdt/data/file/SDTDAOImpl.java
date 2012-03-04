@@ -15,6 +15,7 @@ import org.tg8.sdt.domain.GateService;
 import org.tg8.sdt.domain.Student;
 import org.tg8.sdt.domain.StudentAttendance;
 import org.tg8.sdt.domain.StudentContact;
+import org.tg8.sdt.domain.StudentNameComparator;
 
 public class SDTDAOImpl implements SDTDAO{
 	
@@ -109,6 +110,7 @@ public class SDTDAOImpl implements SDTDAO{
 				returnList.add(currentStudent);
 			}
 		}
+		Collections.sort(returnList, new StudentNameComparator());
 		
 		return returnList;
  	}
@@ -158,6 +160,7 @@ public class SDTDAOImpl implements SDTDAO{
 				}
 			}
 		}
+		Collections.sort(students, new StudentNameComparator());
 		
 		return students;
 	}
@@ -171,6 +174,7 @@ public class SDTDAOImpl implements SDTDAO{
 				notAttendingStudents.add(s);
 			}
 		}
+		Collections.sort(notAttendingStudents, new StudentNameComparator());
 		return notAttendingStudents;
 	}
 

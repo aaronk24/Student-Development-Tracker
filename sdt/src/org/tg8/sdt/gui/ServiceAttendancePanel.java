@@ -49,11 +49,10 @@ class ServiceAttendancePanel extends JPanel implements ActionListener, FocusList
 		
 		super();
 		this.setLayout(new BorderLayout());
-			//need to figure out layout
-		this.add(this.getStudentInfoPanel(), BorderLayout.PAGE_START);
+
+		this.add(this.getStudentInfoPanel(), BorderLayout.LINE_START);
 		this.add(this.getAttendingStudentsPanel(), BorderLayout.LINE_END);
 		
-		//this.add(this.getCurrentStudentPanel(), BorderLayout.CENTER);
 		this.add(this.getCurrentStudentContainerPanel(), BorderLayout.CENTER);
 		
 		List<Student> students = SDTDomainLogic.getSDTDomainLogic().initializeStudentAttendanceList();

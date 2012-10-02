@@ -135,6 +135,7 @@ class ServiceAttendancePanel extends JPanel implements ActionListener, FocusList
 			this.attendingStudents = new JList (this.getAttendingStudentsListModel());
 			this.attendingStudents.setCellRenderer(new StudentListCellRenderer());
 			this.attendingStudents.addFocusListener(this);
+			this.attendingStudents.setVisibleRowCount(25);
 		}
 		return this.attendingStudents;
 	}
@@ -142,7 +143,7 @@ class ServiceAttendancePanel extends JPanel implements ActionListener, FocusList
 	private JScrollPane getAttendingStudentsPane () {
 		if (this.attendingStudentsPane == null) {
 			this.attendingStudentsPane = new JScrollPane(this.getAttendingStudents());
-			this.attendingStudentsPane.setPreferredSize(new Dimension(200,50));
+			//this.attendingStudentsPane.setPreferredSize(new Dimension(200,500));
 		}
 		return this.attendingStudentsPane;
 	}

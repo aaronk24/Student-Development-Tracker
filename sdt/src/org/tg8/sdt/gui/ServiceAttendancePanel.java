@@ -28,7 +28,7 @@ class ServiceAttendancePanel extends JPanel implements ActionListener, FocusList
 	 * 
 	 */
 	private static final long serialVersionUID = -5732423015507020315L;
-	private JPanel studentInfo;
+	private JPanel studentCheckIn;
 	private JLabel barcodeLabel;
 	private JTextField barcodeText;
 	private JPanel currentStudentContainerPanel;
@@ -50,7 +50,7 @@ class ServiceAttendancePanel extends JPanel implements ActionListener, FocusList
 		super();
 		this.setLayout(new BorderLayout());
 
-		this.add(this.getStudentInfoPanel(), BorderLayout.LINE_START);
+		this.add(this.getStudentCheckInPanel(), BorderLayout.LINE_START);
 		this.add(this.getAttendingStudentsPanel(), BorderLayout.LINE_END);
 		
 		this.add(this.getCurrentStudentContainerPanel(), BorderLayout.CENTER);
@@ -62,17 +62,17 @@ class ServiceAttendancePanel extends JPanel implements ActionListener, FocusList
 
 	}
 	
-	private JPanel getStudentInfoPanel () {
-		if (studentInfo == null){
-			studentInfo = new JPanel();
-			studentInfo.add(this.getBarcodeLabel());
-			studentInfo.add(this.getBarcodeText());
+	private JPanel getStudentCheckInPanel () {
+		if (studentCheckIn == null){
+			studentCheckIn = new JPanel();
+			studentCheckIn.add(this.getBarcodeLabel());
+			studentCheckIn.add(this.getBarcodeText());
 			JButton barcodeButton = new JButton("Add");
 			barcodeButton.setActionCommand(ADD_STUDENT_SERVICE);
 			barcodeButton.addActionListener(this);
-			studentInfo.add(barcodeButton);
+			studentCheckIn.add(barcodeButton);
 		}
-		return studentInfo;
+		return studentCheckIn;
 	}
 	
 	private JLabel getBarcodeLabel () {
